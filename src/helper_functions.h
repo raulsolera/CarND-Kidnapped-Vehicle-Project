@@ -19,6 +19,8 @@
 const double M_PI = 3.14159265358979323846;
 #endif
 
+const double kOneOver2Pi = 1 / (2 * M_PI);
+
 /*
  * Struct representing one position/control measurement.
  */

@@ -23,14 +23,10 @@ struct Particle {
 	std::vector<double> sense_y;
 };
 
-
-
 class ParticleFilter {
 	
 	// Number of particles to draw
 	int num_particles; 
-	
-	
 	
 	// Flag, if filter is initialized
 	bool is_initialized;
@@ -78,8 +74,8 @@ public:
 	 * @param predicted Vector of predicted landmark observations
 	 * @param observations Vector of landmark observations
 	 */
-	void dataAssociation(std::vector<LandmarkObs> predicted, std::vector<LandmarkObs>& observations);
-	
+  void dataAssociation(std::vector<Map::single_landmark_s> landmark_list, std::vector<LandmarkObs>& observations);
+
 	/**
 	 * updateWeights Updates the weights for each particle based on the likelihood of the 
 	 *   observed measurements. 
@@ -96,18 +92,6 @@ public:
 	 *   the new set of particles.
 	 */
 	void resample();
-
-	/*
-	 * Set a particles list of associations, along with the associations calculated world x,y coordinates
-	 * This can be a very useful debugging tool to make sure transformations are correct and assocations correctly connected
-	 */
-	Particle SetAssociations(Particle& particle, const std::vector<int>& associations,
-		                     const std::vector<double>& sense_x, const std::vector<double>& sense_y);
-
-	
-	std::string getAssociations(Particle best);
-	std::string getSenseX(Particle best);
-	std::string getSenseY(Particle best);
 
 	/**
 	* initialized Returns whether particle filter is initialized yet or not.
