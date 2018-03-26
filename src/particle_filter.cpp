@@ -184,7 +184,7 @@ void ParticleFilter::updateWeights(double sensor_range, double std_landmark[],
     
     // associate each transformed observation to the closest landmark
     // call data association that will associate nearest landmark id to observation id
-    // but first reduce landmarks to those within 1.5 times the sensor range from the particle
+    // but first reduce landmarks to those within the sensor range from the particle
     std::vector<Map::single_landmark_s> landmarks_in_sensor_range;
     double distance;
     for(Map::single_landmark_s landmark : map_landmarks.landmark_list){
